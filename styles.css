@@ -1,0 +1,19 @@
+/* styles.css */
+.adfriend-widget {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.widget-content h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.widget-content p {
+    margin: 5px 0;
+    font-size: 14px;
+}
