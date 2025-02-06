@@ -24,7 +24,7 @@ class AdBlock {
             for (let ad of ads) { // Fix typo here
                 if (await this.isAd(ad)) {
                     ad.replaceWith(this.createReplacementWidget());
-                    console.log("✅ Ad replaced:", ad);
+                    console.log(" Ad replaced:", ad);
                 }
             }
         }, 2000);
@@ -64,5 +64,8 @@ class AdBlock {
 
 // Make AdBlock globally accessible
 
-window.AdBlock = AdBlock; // Attach to the global window object
-console.log("Adblock mounted")
+window.AdBlock = AdBlock;
+console.log("AdBlock class mounted");
+
+// Then, when you need to use it:
+const adBlock = new window.AdBlock(); // Properly instantiate the class
