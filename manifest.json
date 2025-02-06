@@ -3,23 +3,30 @@
   "name": "AdFriend",
   "version": "1.0",
   "description": "Replace ads with positive content widgets.",
-  "permissions": ["activeTab", "storage"],
+  "permissions": ["activeTab", "storage", "alarms"],
   "host_permissions": ["<all_urls>"],
   "background": {
     "service_worker": "background.js"
   },
   "action": {
-    "default_popup": "popup.html",
+    "default_popup": "main.html",
     "default_icon": {
-      "16": "icons/icon16.png",
-      "48": "icons/icon48.png",
-      "128": "icons/icon128.png"
+      "16": "icons/test.jpg",
+      "48": "icons/test.jpg",
+      "128": "icons/test.jpg"
     }
   },
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["content.js"]
+      "js": ["content.js", "AdDetection/AdBlock.js"],
+      "run_at": "document_start"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["AdDetection/AdBlock.js"],
+      "matches": ["<all_urls>"]
     }
   ]
 }

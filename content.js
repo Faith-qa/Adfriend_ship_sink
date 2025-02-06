@@ -1,42 +1,34 @@
-// content.js
+const scriptUrl = chrome.runtime.getURL("AdDetection/AdBlock.js");
+console.log("Attempting to load AdBlock.js from:", scriptUrl);
 
-// Function to detect ad elements
-function detectAdElements() {
-    const adSelectors = [
-        "div[class*='ad']",
-        "iframe[src*='ads']",
-        "img[src*='ad']",
-        "div[class*='banner']",
-        // Add more selectors as needed
-    ];
+const script = document.createElement("script");
+script.src = scriptUrl;
 
-    let adElements = [];
-    adSelectors.forEach((selector) => {
-        adElements.push(...document.querySelectorAll(selector));
-    });
+script.onload = () => {
+    console.log("AdBlock.js script loaded. Waiting for AdBlock class...");
 
-    return adElements;
-}
+    let attempts = 0;
+    const maxAttempts = 50; // Maximum number of attempts to check for AdBlock
+    const checkInterval = setInterval(() => {
+        if (typeof window.AdBlock !== "undefined") {
+            console.log("AdBlock is available, initializing...");
+            new window.AdBlock();
+            clearInterval(checkInterval);
+        } else {
+            attempts++;
+            if (attempts >= maxAttempts) {
+                console.error("AdBlock not defined after maximum attempts. Aborting.");
+                clearInterval(checkInterval);
+            } else {
+                console.warn("Waiting for AdBlock to be defined...");
+            }
+        }
+    }, 100); // Check every 100ms
+};
 
-// Function to replace ad elements with custom content
-function replaceAdsWithContent() {
-    const adElements = detectAdElements();
+script.onerror = () => {
+    console.error("Failed to load AdBlock.js. Check file path and manifest.");
+};
 
-    adElements.forEach((adElement) => {
-        // Create a new widget
-        const widget = document.createElement("div");
-        widget.className = "adfriend-widget";
-        widget.innerHTML = `
-      <div class="widget-content">
-        <h3>Motivational Quote</h3>
-        <p>"The only limit is your imagination."</p>
-      </div>
-    `;
-
-        // Replace the ad element with the widget
-        adElement.replaceWith(widget);
-    });
-}
-
-// Run the replacement function
-replaceAdsWithContent();
+// Inject the script into the webpage
+document.documentElement.appendChild(script);
