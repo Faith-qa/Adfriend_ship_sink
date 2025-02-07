@@ -138,6 +138,12 @@ function refreshContent() {
     }
 }
 
+// Close popup when close button is clicked
+closeButton.addEventListener("click", function() {
+    widgetContainer.style.display = "none";
+    console.log("Popup closed.");
+});
+
 // Automatically cycle content every 5 seconds (5000 milliseconds)
 setInterval(refreshContent, 5000);
 
