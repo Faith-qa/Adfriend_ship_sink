@@ -16,6 +16,12 @@
       "128": "icons/test.jpg"
     }
   },
+  "web_accessible_resources": [
+    {
+      "resources": ["widget-card/widget.html", "widget-card/widget_styles.css"],
+      "matches": ["<all_urls>"]
+    }
+  ],
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
