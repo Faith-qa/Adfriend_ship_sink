@@ -1,3 +1,5 @@
+console.log("🚀 widget.js is loaded and running!");
+
 const quotes = [
     // Bible Quotes
     {
@@ -102,50 +104,58 @@ const quotes = [
     }
 ];
 
-let currentIndex = 0;
-const quoteElement = document.getElementById("quote");
-const authorElement = document.getElementById("author");
-const contentTypeElement = document.getElementById("content-type");
-const iconElement = document.getElementById("icon");
+document.addEventListener("DOMContentLoaded", function() {
+    let currentIndex = 0;
+    const quoteElement = document.getElementById("quote");
+    const authorElement = document.getElementById("author");
+    const contentTypeElement = document.getElementById("content-type");
+    const iconElement = document.getElementById("icon");
+    const closeButton = document.getElementById("close-button");
+    const widgetContainer = document.getElementById("widget-container");
 
-function refreshContent() {
-    const randomIndex = Math.floor(Math.random() * quotes.length); // Randomly select an index
-    const currentQuote = quotes[randomIndex]; // Get the selected quote
+    function refreshContent() {
+        const randomIndex = Math.floor(Math.random() * quotes.length); // Randomly select an index
+        const currentQuote = quotes[randomIndex]; // Get the selected quote
 
-    // Update text content
-    quoteElement.textContent = currentQuote.text;
-    authorElement.textContent = currentQuote.author || ''; // Hide author if not available
-    contentTypeElement.textContent = currentQuote.type; // Update the quote type in the UI
+        // Update text content
+        quoteElement.textContent = currentQuote.text;
+        authorElement.textContent = currentQuote.author || ''; // Hide author if not available
+        contentTypeElement.textContent = currentQuote.type; // Update the quote type in the UI
 
-    // Define icon sources
-    const iconPaths = {
-        "Bible Quote": "icons/icon48.png",
-        "Motivational Quote": "icons/icon16.png",
-        "Quranic Quote": "icons/icon48.png",
-        "Buddhist Quote": "icons/icon48.png",
-        "Reminder" : "icons/icon128.png",
-        "Healthy Lifestyle Tip" : "icons/icon15.png"
-    };
+        // Define icon sources
+        const iconPaths = {
+            "Bible Quote": "icons/icon48.png",
+            "Motivational Quote": "icons/icon16.png",
+            "Quranic Quote": "icons/icon48.png",
+            "Buddhist Quote": "icons/icon48.png",
+            "Reminder" : "icons/icon128.png",
+            "Healthy Lifestyle Tip" : "icons/icon15.png"
+        };
 
-    // Set icon based on quote type
-    if (iconPaths[currentQuote.type]) {
-        iconElement.src = iconPaths[currentQuote.type];
-        iconElement.style.display = "block"; // Ensure icon is visible
-        console.log(`Icon set to: ${iconElement.src}`);
-    } else {
-        iconElement.style.display = "none"; // Hide icon for other types
-        console.log("No icon displayed.");
+        // Set icon based on quote type
+        if (iconPaths[currentQuote.type]) {
+            iconElement.src = iconPaths[currentQuote.type];
+            iconElement.style.display = "block"; // Ensure icon is visible
+            console.log(`Icon set to: ${iconElement.src}`);
+        } else {
+            iconElement.style.display = "none"; // Hide icon for other types
+            console.log("No icon displayed.");
+        }
     }
-}
 
-// Close popup when close button is clicked
-closeButton.addEventListener("click", function() {
-    widgetContainer.style.display = "none";
-    console.log("Popup closed.");
+    // Close popup when close button is clicked
+    if (closeButton) {
+        closeButton.addEventListener("click", function() {
+            widgetContainer.style.display = "none";
+            console.log("Popup closed.");
+        });
+    } else {
+        console.error("closeButton not found in the document.");
+    }
+
+    // Automatically cycle content every 5 seconds (5000 milliseconds)
+    setInterval(refreshContent, 5000);
+
+    // Initial content load
+    refreshContent();
 });
-
-// Automatically cycle content every 5 seconds (5000 milliseconds)
-setInterval(refreshContent, 5000);
-
-// Initial content load
-refreshContent();

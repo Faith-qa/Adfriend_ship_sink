@@ -20,7 +20,6 @@
     {
       "resources": [
         "widget-card/widget.html",
-        "widget-card/widget.js",
         "widget-card/widget_styles.css"
       ],
       "matches": ["<all_urls>"]
@@ -30,7 +29,7 @@
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["content.js", "AdDetection/AdBlock.js"],
+      "js": ["content.js", "widget-card/widget.js"],
       "run_at": "document_start"
     }
   ]

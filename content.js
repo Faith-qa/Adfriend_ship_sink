@@ -1,3 +1,6 @@
+const cssUrl = chrome.runtime.getURL("widget-card/widget_styles.css");
+console.log(cssUrl); // This should print the correct URL
+
 // Function to detect ad elements
 function detectAdElements() {
     const adSelectors = [
