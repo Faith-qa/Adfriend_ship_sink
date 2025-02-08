@@ -3,24 +3,26 @@ body {
     font-family: 'Lora', serif;
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
     background-color: #f4f4f4;
 }
 
 /* Widget Container Styles */
 .widget-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%;
+    background: rgba(0, 0, 0, 0.1); /* Slight overlay effect */
+    z-index: 9999;
 }
 
 /* Widget Card Styles */
 .widget-card {
-    position: relative; /* Enable positioning of the icon within the card */
+    position: relative;  /* Enable positioning of the icon within the card */
     width: 350px;
     padding: 20px;
     background: linear-gradient(135deg, #e0f7fa, #b2dfdb);
@@ -54,20 +56,27 @@ body {
     position: absolute; /* Position the icon within the widget card */
     bottom: 10px;  /* 10px from the bottom */
     right: 10px;   /* 10px from the right */
-    width: 3vw;   /* Adjust the size of the icon */
-    height: 3vw;  /* Adjust the size of the icon */
+    width: 40px;
+    height: 40px;
+    min-width: 30px;
+    min-height: 30px;
     cursor: pointer;
 }
 
+/* Close Button */
 #close-btn {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 5px;
+    right: 5px;
+    width: 30px;
+    height: 30px;
     background: none;
     border: none;
-    font-size: 20px;
+    font-size: 24px;
     cursor: pointer;
     color: black;
+    text-align: center;
+    line-height: 30px;
 }
 
 #close-btn:hover {

@@ -18,21 +18,20 @@
   },
   "web_accessible_resources": [
     {
-      "resources": ["widget-card/widget.html", "widget-card/widget_styles.css"],
+      "resources": [
+        "widget-card/widget.html",
+        "widget-card/widget.js",
+        "widget-card/widget_styles.css"
+      ],
       "matches": ["<all_urls>"]
     }
   ],
+
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
       "js": ["content.js", "AdDetection/AdBlock.js"],
       "run_at": "document_start"
-    }
-  ],
-  "web_accessible_resources": [
-    {
-      "resources": ["AdDetection/AdBlock.js"],
-      "matches": ["<all_urls>"]
     }
   ]
 }

@@ -41,24 +41,35 @@ async function injectPopupWidget(targetAd) {
         const popupContainer = document.createElement("div");
         popupContainer.innerHTML = widgetHTML;
 
-        // Apply styles for the popup
-        popupContainer.style.cssText = `
-            position: absolute;
+        // Apply styles manually
+         popupContainer.style.cssText = `
             top: ${targetAd.offsetTop}px;
             left: ${targetAd.offsetLeft}px;
             width: ${targetAd.offsetWidth || 300}px;
-            height: ${targetAd.offsetHeight || 150}px;
-            background: white;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-            z-index: 10000;
-        `;
+            height: ${targetAd.offsetHeight || 150}px;`;
+            //position: absolute;
+        //   background: white;
+        //     border-radius: 10px;
+        //     padding: 20px;
+        //     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        //     z-index: 10000;
+        // `;
 
-        // Append the widget near the target ad
+        // Inject widget_styles.css manually
+        const styleLink = document.createElement("link");
+        styleLink.rel = "stylesheet";
+        styleLink.href = chrome.runtime.getURL("widget-card/widget_styles.css");
+        document.head.appendChild(styleLink);
+
+        // Append the widget to the body
         document.body.appendChild(popupContainer);
 
-        // Add close functionality to the widget
+        // Inject widget.js manually
+        const script = document.createElement("script");
+        script.src = chrome.runtime.getURL("widget-card/widget.js");
+        document.body.appendChild(script);
+
+        // Close button functionality
         const closeButton = popupContainer.querySelector("#close-btn");
         if (closeButton) {
             closeButton.addEventListener("click", () => {
@@ -102,24 +113,33 @@ function throttledReplaceAds() {
 replaceAdsWithPopup();
 
 // Set up a Mutation Observer for dynamically added ads
-const observer = new MutationObserver((mutations) => {
-    let shouldRun = false;
+document.addEventListener("DOMContentLoaded", () => {
+    // Ensure body is available
+    if (!document.body) {
+        console.error("Body is not available, cannot observe DOM changes.");
+        return;
+    }
 
-    // Check if any mutation involves addition of new nodes
-    mutations.forEach((mutation) => {
-        if (mutation.addedNodes.length > 0) {
-            shouldRun = true;
+    // Set up a Mutation Observer for dynamically added ads
+    const observer = new MutationObserver((mutations) => {
+        let shouldRun = false;
+
+        // Check if any mutation involves addition of new nodes
+        mutations.forEach((mutation) => {
+            if (mutation.addedNodes.length > 0) {
+                shouldRun = true;
+            }
+        });
+
+        // Run the replacement function if needed
+        if (shouldRun) {
+            throttledReplaceAds();
         }
     });
 
-    // Run the replacement function if needed
-    if (shouldRun) {
-        throttledReplaceAds();
-    }
-});
-
-// Observe changes in the body to detect dynamically added elements
-observer.observe(document.body, {
-    childList: true,
-    subtree: true,
+    // Now safely observe changes in the body
+    observer.observe(document.body, {
+        childList: true,
+        subtree: true,
+    });
 });

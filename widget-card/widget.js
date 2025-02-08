@@ -15,7 +15,7 @@ const quotes = [
         text: "\"Trust in the Lord with all your heart and lean not on your own understanding.\"",
         author: "- Proverbs 3:5"
     },
-    
+
     // Quranic Quotes
     {
         type: "Quranic Quote",
@@ -111,7 +111,7 @@ const iconElement = document.getElementById("icon");
 function refreshContent() {
     const randomIndex = Math.floor(Math.random() * quotes.length); // Randomly select an index
     const currentQuote = quotes[randomIndex]; // Get the selected quote
-    
+
     // Update text content
     quoteElement.textContent = currentQuote.text;
     authorElement.textContent = currentQuote.author || ''; // Hide author if not available
