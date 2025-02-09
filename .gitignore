@@ -9,3 +9,8 @@
 .idea
 gpt_backend/node_modules
 gpt_backend/package-lock.json
+ts_version/.idea
+ts_version/node_modules
+ts_version/dist
+ts_version/_metadata
+ts_version/ts_version.iml
