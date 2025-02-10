@@ -12,11 +12,24 @@ chrome.storage.sync.get("strictBlock", (data: { strictBlock: boolean; }) => {
 
 // Function to fetch quotes once and cache them
 function fetchQuotes() {
-    chrome.runtime.sendMessage({ type: "getSource" }, (response: { source: string ; }) => {
-        if (!response) return;
+    chrome.runtime.sendMessage({ type: "getSource" }, (response: { source: string }) => {
+        if (!response || !response.source) {
+            console.error("Failed to fetch source from runtime message:", response);
+            return;
+        }
+
+        console.log("Source received from runtime:", response.source);
+
         if (response.source !== cachedSource) {
             cachedSource = response.source;
             cachedQuotes = getQuotes(response.source);
+
+            console.log("Cached quotes:", cachedQuotes);
+
+            // If cachedQuotes is empty, log the issue
+            if (cachedQuotes.length === 0) {
+                console.warn(`No quotes found for source: ${response.source}`);
+            }
         }
     });
 }
@@ -48,7 +61,7 @@ function replaceFirstAd() {
         quoteContainer.className = "spiritual-quote";
         quoteContainer.textContent = cachedQuotes.length
             ? cachedQuotes[Math.floor(Math.random() * cachedQuotes.length)]
-            : "Your motivational quote will appear here."; // Fallback text
+            : "With great power comes great responsibility."; // Fallback text
 
         // Insert at the very top of the page
         document.body.prepend(quoteContainer);
