@@ -106,6 +106,7 @@ let currentIndex = 0;
 const quoteElement = document.getElementById("quote");
 const authorElement = document.getElementById("author");
 const contentTypeElement = document.getElementById("content-type");
+const closeButton = document.getElementById("close-btn");
 const iconElement = document.getElementById("icon");
 
 function refreshContent() {
@@ -139,10 +140,18 @@ function refreshContent() {
 }
 
 // Close popup when close button is clicked
-closeButton.addEventListener("click", function() {
-    widgetContainer.style.display = "none";
-    console.log("Popup closed.");
-});
+if (closeButton) {
+    closeButton.addEventListener("click", function () {
+        if (widgetContainer) {
+            widgetContainer.style.display = "none";
+            console.log("Popup closed.");
+        } else {
+            console.error("widgetContainer element not found!");
+        }
+    });
+} else {
+    console.error("closeButton element not found!");
+}
 
 // Automatically cycle content every 5 seconds (5000 milliseconds)
 setInterval(refreshContent, 5000);
