@@ -1,5 +1,7 @@
 console.log("🚀 widget.js is loaded and running!");
 
+
+
 const quotes = [
     // Bible Quotes
     {
