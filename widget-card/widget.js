@@ -1,3 +1,5 @@
+console.log("🚀 widget.js is loaded and running!");
+
 const quotes = [
     // Bible Quotes
     {
@@ -15,7 +17,7 @@ const quotes = [
         text: "\"Trust in the Lord with all your heart and lean not on your own understanding.\"",
         author: "- Proverbs 3:5"
     },
-    
+
     // Quranic Quotes
     {
         type: "Quranic Quote",
@@ -102,43 +104,55 @@ const quotes = [
     }
 ];
 
+<<<<<<< HEAD
 let currentIndex = 0;
 const quoteElement = document.getElementById("quote");
 const authorElement = document.getElementById("author");
 const contentTypeElement = document.getElementById("content-type");
 const closeButton = document.getElementById("close-btn");
 const iconElement = document.getElementById("icon");
+=======
+document.addEventListener("DOMContentLoaded", function() {
+    let currentIndex = 0;
+    const quoteElement = document.getElementById("quote");
+    const authorElement = document.getElementById("author");
+    const contentTypeElement = document.getElementById("content-type");
+    const iconElement = document.getElementById("icon");
+    const closeButton = document.getElementById("close-button");
+    const widgetContainer = document.getElementById("widget-container");
+>>>>>>> 912f6eccd60b4d4fec1e30116648c0e4877313ba
 
-function refreshContent() {
-    const randomIndex = Math.floor(Math.random() * quotes.length); // Randomly select an index
-    const currentQuote = quotes[randomIndex]; // Get the selected quote
-    
-    // Update text content
-    quoteElement.textContent = currentQuote.text;
-    authorElement.textContent = currentQuote.author || ''; // Hide author if not available
-    contentTypeElement.textContent = currentQuote.type; // Update the quote type in the UI
+    function refreshContent() {
+        const randomIndex = Math.floor(Math.random() * quotes.length); // Randomly select an index
+        const currentQuote = quotes[randomIndex]; // Get the selected quote
 
-    // Define icon sources
-    const iconPaths = {
-        "Bible Quote": "icons/icon48.png",
-        "Motivational Quote": "icons/icon16.png",
-        "Quranic Quote": "icons/icon48.png",
-        "Buddhist Quote": "icons/icon48.png",
-        "Reminder" : "icons/icon128.png",
-        "Healthy Lifestyle Tip" : "icons/icon15.png"
-    };
+        // Update text content
+        quoteElement.textContent = currentQuote.text;
+        authorElement.textContent = currentQuote.author || ''; // Hide author if not available
+        contentTypeElement.textContent = currentQuote.type; // Update the quote type in the UI
 
-    // Set icon based on quote type
-    if (iconPaths[currentQuote.type]) {
-        iconElement.src = iconPaths[currentQuote.type];
-        iconElement.style.display = "block"; // Ensure icon is visible
-        console.log(`Icon set to: ${iconElement.src}`);
-    } else {
-        iconElement.style.display = "none"; // Hide icon for other types
-        console.log("No icon displayed.");
+        // Define icon sources
+        const iconPaths = {
+            "Bible Quote": "icons/icon48.png",
+            "Motivational Quote": "icons/icon16.png",
+            "Quranic Quote": "icons/icon48.png",
+            "Buddhist Quote": "icons/icon48.png",
+            "Reminder" : "icons/icon128.png",
+            "Healthy Lifestyle Tip" : "icons/icon15.png"
+        };
+
+        // Set icon based on quote type
+        if (iconPaths[currentQuote.type]) {
+            iconElement.src = iconPaths[currentQuote.type];
+            iconElement.style.display = "block"; // Ensure icon is visible
+            console.log(`Icon set to: ${iconElement.src}`);
+        } else {
+            iconElement.style.display = "none"; // Hide icon for other types
+            console.log("No icon displayed.");
+        }
     }
-}
 
+<<<<<<< HEAD
 // Close popup when close button is clicked
 if (closeButton) {
     closeButton.addEventListener("click", function () {
@@ -158,3 +172,21 @@ setInterval(refreshContent, 5000);
 
 // Initial content load
 refreshContent();
+=======
+    // Close popup when close button is clicked
+    if (closeButton) {
+        closeButton.addEventListener("click", function() {
+            widgetContainer.style.display = "none";
+            console.log("Popup closed.");
+        });
+    } else {
+        console.error("closeButton not found in the document.");
+    }
+
+    // Automatically cycle content every 5 seconds (5000 milliseconds)
+    setInterval(refreshContent, 5000);
+
+    // Initial content load
+    refreshContent();
+});
+>>>>>>> 912f6eccd60b4d4fec1e30116648c0e4877313ba

@@ -1,0 +1,18 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 10px;
+    background-color: #FDF3E7;
+}
+
+h2 {
+    color: #8D6E63;
+}
+
+select {
+    padding: 5px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #BCAAA4;
+    background-color: #FFF8E1;
+}
