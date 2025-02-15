@@ -156,20 +156,21 @@ function injectStyles(): void {
       top: 10px;
       right: 20px;
       width: 300px;
-      min-width: 300px;
+      min-width: 400px;
       max-width: 600px;
       z-index: 10000;
     }
     .widget-card {
-      background: linear-gradient(135deg, #e0f7fa, #b2dfdb);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(45deg, #ff4d79, #4da6ff);      
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
       border-radius: 10px;
       padding: 16px;
       text-align: center;
-      transition: all 0.3s ease-in-out;
       font-size: 14px;
-      font-weight: bold;
-      color: #333;
+      font-weight: 500;
+      color: white;
+      gap: 10px;
+      transition: background 0.3s ease-in-out, opacity 0.3s;
     }
     .widget-card:hover {
       transform: scale(1.02);
@@ -183,6 +184,7 @@ function injectStyles(): void {
       font-size: 20px;
       cursor: pointer;
       color: black;
+      margin: 5
     }
     #close-btn:hover {
       color: red;

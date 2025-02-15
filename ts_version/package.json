@@ -16,6 +16,7 @@
     "webpack-cli": "^6.0.1"
   },
   "dependencies": {
+    "@google/generative-ai": "^0.21.0",
     "@types/chrome": "^0.0.304"
   }
 }
