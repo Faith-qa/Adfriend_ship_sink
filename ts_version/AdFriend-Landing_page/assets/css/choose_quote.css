@@ -1,76 +1,55 @@
-/* Global Styles */
 body {
-    font-family: 'Lora', serif;
-    margin: 0;
-    padding: 0;
+    font-family: Arial, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f4f4f4;
+    background-color: #f5f5f5;
 }
-
-/* Widget Container Styles */
-.widget-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
+.dropdown {
+    position: relative;
+    display: inline-block;
 }
-
-/* Widget Card Styles */
-.widget-card {
-    position: relative; /* Enable positioning of the icon within the card */
-    width: 350px;
-    padding: 20px;
-    background: linear-gradient(135deg, #e0f7fa, #d469c6);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
-    text-align: center;
-    transition: all 0.3s ease-in-out;
-}
-
-.widget-card:hover {
-    transform: scale(1.02);
-}
-
-/* Quote Text Styles */
-.quote {
-    font-size: 18px;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 15px;
-}
-
-/* Author Text Styles */
-.author {
-    margin-top: 10px;
-    font-size: 14px;
-    color: #666;
-}
-
-/* Icon Styles (Position it at the bottom-right) */
-.widget-icon {
-    position: absolute; /* Position the icon within the widget card */
-    bottom: 10px;  /* 10px from the bottom */
-    right: 10px;   /* 10px from the right */
-    width: 3vw;   /* Adjust the size of the icon */
-    height: 3vw;  /* Adjust the size of the icon */
-    cursor: pointer;
-}
-
-#close-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: none;
+.dropbtn {
+    background: linear-gradient(45deg, #ff4d79, #4da6ff, #800000);
+    color: white;
+    padding: 12px 20px;
+    font-size: 16px;
     border: none;
-    font-size: 20px;
+    border-radius: 8px;
     cursor: pointer;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.dropbtn::after {
+    content: '\25BE'; /* Dropdown arrow */
+    font-size: 14px;
+}
+.dropbtn:hover {
+    opacity: 0.8;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    z-index: 1;
+}
+.dropdown-content a {
     color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    transition: 0.3s;
 }
-
-#close-btn:hover {
-    color: red;
+.dropdown-content a:hover {
+    background-color: #ff4d79;
+    color: white;
 }
-
+.dropdown:hover .dropdown-content {
+    display: block;
+}

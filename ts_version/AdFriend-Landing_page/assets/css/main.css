@@ -9,7 +9,7 @@
 :root { 
   --background-color: #7f4f8b;
   --default-color: #0c3834;
-  --heading-color: #58661b;
+  --heading-color: #bac1c5;
   --accent-color: #ff4a17;
   --surface-color: #ffffff;
   --contrast-color: #ffffff;
@@ -17,7 +17,7 @@
 
 /* Nav Menu Colors */
 :root {
-  --nav-color: #ffe600;
+  --nav-color: #e47d94;
   --nav-hover-color: #ff4a17;
   --nav-mobile-background-color: #ffffff;
   --nav-dropdown-background-color: #ffffff;
