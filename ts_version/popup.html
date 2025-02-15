@@ -1,18 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Spiritual Ad Blocker</title>
-  <link rel="stylesheet" href="styles/popup.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Spiritual & Motivational Widgets</title>
+  <!-- Link to your external CSS -->
+  <link rel="stylesheet" href="styles/popup.css" />
 </head>
 <body>
-<h2>Select Spiritual Source</h2>
-<select id="source">
-  <option value="bible">Bible</option>
-  <option value="quran">Quran</option>
-  <option value="buddhist">Buddhist</option>
-</select>
-<script type="module" src="/dist/popup.js"></script>
+
+<h2>Select a Quote</h2>
+
+<!-- Button-based dropdown for selecting the quote type -->
+<div class="dropdown">
+  <button class="dropbtn">Select a Quote</button>
+  <div class="dropdown-content">
+    <a href="#" class="quote-option" data-type="bible">Bible</a>
+    <a href="#" class="quote-option" data-type="quran">Quran</a>
+    <a href="#" class="quote-option" data-type="buddhist">Buddhist</a>
+    <a href="#" class="quote-option" data-type="motivational">Motivational Quotes</a>
+    <a href="#" class="quote-option" data-type="health">Health Tips</a>
+    <a href="#" class="quote-option" data-type="daily">Daily Reminders</a>
+  </div>
+</div>
+
+<!-- Button to open the landing page -->
+<a href="#" id="check-us-out" class="check-out">Check Us Out</a>
+
+<!-- Your compiled JS (from popup.ts) -->
+<script src="dist/popup.js"></script>
+
 </body>
 </html>
