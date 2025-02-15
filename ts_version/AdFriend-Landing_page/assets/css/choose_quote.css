@@ -1,0 +1,76 @@
+/* Global Styles */
+body {
+    font-family: 'Lora', serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+}
+
+/* Widget Container Styles */
+.widget-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+/* Widget Card Styles */
+.widget-card {
+    position: relative; /* Enable positioning of the icon within the card */
+    width: 350px;
+    padding: 20px;
+    background: linear-gradient(135deg, #e0f7fa, #d469c6);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+}
+
+.widget-card:hover {
+    transform: scale(1.02);
+}
+
+/* Quote Text Styles */
+.quote {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+/* Author Text Styles */
+.author {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #666;
+}
+
+/* Icon Styles (Position it at the bottom-right) */
+.widget-icon {
+    position: absolute; /* Position the icon within the widget card */
+    bottom: 10px;  /* 10px from the bottom */
+    right: 10px;   /* 10px from the right */
+    width: 3vw;   /* Adjust the size of the icon */
+    height: 3vw;  /* Adjust the size of the icon */
+    cursor: pointer;
+}
+
+#close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: black;
+}
+
+#close-btn:hover {
+    color: red;
+}
+

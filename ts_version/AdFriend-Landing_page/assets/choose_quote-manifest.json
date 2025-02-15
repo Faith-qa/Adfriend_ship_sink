@@ -1,0 +1,16 @@
+{
+	"manifest_version": 3,
+	"name": "choose_quote",
+	"description": "Enables the user to choose the prefered quote type.",
+	"version": "1.0",
+	"action": {
+	  "default_popup": "choose_quote.html"
+	},
+	"permissions": [
+	  "activeTab"
+	],
+	"background": {
+	  "service_worker": "AdFriend-Landing_page/src/background.js"
+	}
+  }
+  

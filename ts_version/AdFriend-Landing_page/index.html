@@ -47,7 +47,31 @@
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
 
-      <a class="cta-btn" href="Insatll-page.html">Get Extension</a>
+      <a class="cta-btn" href="choose_quote.html">Choose Quote Type</a>
+    <!-- Modal Structure -->
+<div id="quoteModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Select Quote Type</h2>
+    
+    <!-- Quote Type Selection -->
+    <div>
+      <label for="optionsSelect">Select Quote Type:</label>
+      <select id="optionsSelect">
+        <option value="">--Choose a Quote Type--</option>
+        <option value="option1">Option 1</option>
+        <option value="option2">Option 2</option>
+        <option value="option3">Option 3</option>
+      </select>
+    </div>
+
+    <!-- Display Selected Quote -->
+    <div id="selectedOptionContent">
+      <p>Please select an option.</p>
+    </div>
+  </div>
+</div>  
+      
 
     </div>
   </header>
@@ -240,6 +264,17 @@
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
+
+  <script>
+    document.querySelector('.cta-btn').addEventListener('click', function(event) {
+      event.preventDefault();
+      window.open('choose_quote.html', 'popup', 'width=600,height=400,scrollbars=yes');
+    });
+    
+    function closeModal() {
+      document.getElementById('quoteModal').style.display = 'none';
+    }
+  </script>
 
 </body>
 

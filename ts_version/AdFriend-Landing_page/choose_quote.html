@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spiritual & Motivational Widgets</title>
+    <link rel="stylesheet" href="assets/css/choose_quote.css">
+</head>
+<body>
+    <div class="widgets-container">
+        <!-- Single Widget -->
+        <div class="widget-card" id="quote-widget">
+          <img src="assets/img/flower.jpg" alt="" data-aos="fade-in">      
+			<button id="close-btn">&times;</button>
+			
+      <div id="quoteModal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <h2>Select Quote Type</h2>
+          
+          <!-- Quote Type Selection -->
+          <div>
+            <select id="optionsSelect">
+              <option value="">--Choose a Quote Type--</option>
+              <option value="option1">Bibble</option>
+              <option value="option2">Buddhist</option>
+              <option value="option3">Quaran</option>
+              <option value="option4">Motivational</option>
+              <option value="option5">Health</option>
+            </select>
+          </div>
+      
+          <button id="save-changes-btn" enabled>Save Changes</button>
+        </div>
+      </div>	
+                 
+        </div>
+    </div>
+    <script src="assets/js/choose_quote.js"></script>
+</body>
+</html>

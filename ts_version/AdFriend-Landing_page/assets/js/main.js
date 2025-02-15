@@ -1,6 +1,35 @@
 (function() {
   "use strict";
 
+  function handleSelectionChange(event) {
+    const selectedValue = event.target.value;
+    const contentDiv = document.querySelector('#selectedOptionContent');
+
+    // Clear previous content
+    contentDiv.innerHTML = '';
+
+    // Update content based on the selected option
+    switch (selectedValue) {
+      case 'option1':
+        contentDiv.innerHTML = '<p>You selected Option 1</p>';
+        break;
+      case 'option2':
+        contentDiv.innerHTML = '<p>You selected Option 2</p>';
+        break;
+      case 'option3':
+        contentDiv.innerHTML = '<p>You selected Option 3</p>';
+        break;
+      default:
+        contentDiv.innerHTML = '<p>Please select an option</p>';
+    }
+  }
+
+  // Attach event listener to the select element
+  const selectElement = document.querySelector('#optionsSelect');
+  if (selectElement) {
+    selectElement.addEventListener('change', handleSelectionChange);
+  }
+
   function toggleScrolled() {
     const selectBody = document.querySelector('body');
     const selectHeader = document.querySelector('#header');
