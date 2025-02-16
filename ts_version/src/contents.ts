@@ -1,7 +1,7 @@
 // content.ts
 
 // 1. Define the interface for clarity
-import { getQuotes } from "./utils";
+import {getQuotes} from "./utils";
 
 interface Quote {
     text: string;
@@ -13,7 +13,7 @@ let widgetContainer: HTMLElement | null = null;
 let cachedQuotes: Quote[] = [];
 let cachedSource: string | null = null;
 
-let strictBlockMode = false;
+let strictBlockMode = false; // or remove if unused
 let refreshIntervalId: number | null = null;
 
 // 2. Functions to read from Chrome storage / runtime
@@ -46,7 +46,7 @@ async function fetchQuotes(): Promise<void> {
     if (source !== cachedSource) {
         cachedSource = source;
         try {
-            const quotesRaw = await getQuotes(source);
+            const quotesRaw = await getQuotes(source); // from "./utils"
             cachedQuotes = quotesRaw.map((q) => ({
                 text: q,
                 author: "",
@@ -85,7 +85,7 @@ function removeEmptyAdContainers(): void {
 
 // 5. Widget creation
 function createWidget(): void {
-    if (widgetContainer) return;
+    if (widgetContainer) return; // guard against duplicates
 
     widgetContainer = document.createElement("div");
     widgetContainer.className = "widget-container";
@@ -100,12 +100,13 @@ function createWidget(): void {
 
     document.body.appendChild(widgetContainer);
     injectStyles();
-    makeDraggable(widgetContainer);
 
+    // Close button
     document.getElementById("close-btn")?.addEventListener("click", () => {
         removeWidget();
     });
 
+    // Initialize a single refresh interval, if not already set
     if (!refreshIntervalId) {
         refreshIntervalId = window.setInterval(() => {
             refreshContent();
@@ -118,6 +119,7 @@ function removeWidget(): void {
         widgetContainer.remove();
         widgetContainer = null;
     }
+    // optional: if you want to stop the interval when user closes the widget
     if (refreshIntervalId) {
         clearInterval(refreshIntervalId);
         refreshIntervalId = null;
@@ -138,7 +140,7 @@ function refreshContent(): void {
     if (authorElement) authorElement.textContent = currentQuote.author || "";
     if (contentTypeElement) {
         contentTypeElement.textContent = currentQuote.type;
-        contentTypeElement.style.display = "none";
+        contentTypeElement.style.display = "none"; // hide the source
     }
 }
 
@@ -157,10 +159,6 @@ function injectStyles(): void {
       min-width: 300px;
       max-width: 600px;
       z-index: 10000;
-      cursor: grab;
-    }
-    .widget-container:active {
-      cursor: grabbing;
     }
     .widget-card {
       background: linear-gradient(45deg, #ff4d79, #4da6ff);
@@ -173,7 +171,7 @@ function injectStyles(): void {
       font-weight: 500;
       color: white;
       gap: 10px;
-      user-select: none;
+
     }
     .widget-card:hover {
       transform: scale(1.02);
@@ -196,55 +194,24 @@ function injectStyles(): void {
     document.head.appendChild(style);
 }
 
-// 7. Make the widget draggable
-function makeDraggable(element: HTMLElement): void {
-    let isDragging = false;
-    let startX = 0, startY = 0, initialX = 0, initialY = 0;
-
-    element.addEventListener("mousedown", (event) => {
-        isDragging = true;
-        startX = event.clientX;
-        startY = event.clientY;
-        const rect = element.getBoundingClientRect();
-        initialX = rect.left;
-        initialY = rect.top;
-
-        document.addEventListener("mousemove", onMouseMove);
-        document.addEventListener("mouseup", onMouseUp);
-    });
-
-    function onMouseMove(event: MouseEvent) {
-        if (!isDragging) return;
-        const dx = event.clientX - startX;
-        const dy = event.clientY - startY;
-        element.style.left = `${initialX + dx}px`;
-        element.style.top = `${initialY + dy}px`;
-    }
-
-    function onMouseUp() {
-        isDragging = false;
-        document.removeEventListener("mousemove", onMouseMove);
-        document.removeEventListener("mouseup", onMouseUp);
-    }
-}
-
 function resetGlobalStyles(): void {
     document.body.style.opacity = "1";
     document.body.style.backgroundColor = "";
     document.body.style.filter = "";
 }
 
-// 8. Initialization
+// 7. Initialization
 (async function init() {
-    strictBlockMode = await getStrictBlockMode();
+    strictBlockMode = await getStrictBlockMode(); // if actually needed
     await fetchQuotes();
     resetGlobalStyles();
     createWidget();
-    refreshContent();
+    refreshContent(); // Make sure the first quote shows up immediately
 })();
 
-// 9. Mutation Observer
+// 8. Mutation Observer
 const observer = new MutationObserver(() => {
+    // Potentially debounce or throttle if needed
     createWidget();
     removeEmptyAdContainers();
 });

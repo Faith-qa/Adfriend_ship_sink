@@ -1,7 +1,7 @@
 import {GoogleGenerativeAI} from "@google/generative-ai";
 
 //Replace with API key
-const gemini = new GoogleGenerativeAI("YOUR API KEY")
+const gemini = new GoogleGenerativeAI("API KEY")
 
 // Cache to store quotes for different sources
 
