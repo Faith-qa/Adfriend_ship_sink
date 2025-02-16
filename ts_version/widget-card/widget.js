@@ -1,5 +1,7 @@
 console.log("🚀 widget.js is loaded and running!");
 
+
+
 const quotes = [
     // Bible Quotes
     {
@@ -188,5 +190,9 @@ refreshContent();
 
     // Initial content load
     refreshContent();
+<<<<<<< HEAD:widget-card/widget.js
 });
 >>>>>>> 912f6eccd60b4d4fec1e30116648c0e4877313ba
+=======
+});
+>>>>>>> 644f99f22591236fecd18a4931881c6b62f3a1b7:ts_version/widget-card/widget.js
