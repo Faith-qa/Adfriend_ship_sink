@@ -48,3 +48,8 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
         return true;
     }
 });
+
+// 🚀 NEW: Open landing page when clicking the extension icon
+chrome.action.onClicked.addListener(() => {
+    chrome.tabs.create({ url: chrome.runtime.getURL("AdFriend-Landing_page/index.html") });
+});

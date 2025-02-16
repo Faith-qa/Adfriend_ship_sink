@@ -10,12 +10,14 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "@google/generative-ai": "^0.21.0",
+    "@types/chrome": "^0.0.304",
     "ts-loader": "^9.5.2",
     "typescript": "^5.7.3",
     "webpack": "^5.97.1",
     "webpack-cli": "^6.0.1"
   },
   "dependencies": {
-    "@types/chrome": "^0.0.304"
+    "Webpack": "npm:webpack@^5.98.0"
   }
 }
